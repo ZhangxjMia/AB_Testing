@@ -27,6 +27,7 @@ Too long to response
 10. First time trying something new: run an A/A test simultaneously to check for systematic biases
 
 
+
 Case Study 1: Testing a red vs. green button
 
 Step 1: Define goals and form hypotheses
@@ -107,3 +108,82 @@ Summary: Classic button color experiment
 * Don’t stop the test too early!
 * If users do not have to be logged in to be part of the experiment, you may have problems with mixed group users
 * To avoid systematic biases, making sure that you have even treatment and control groups
+
+
+Case Study 2: Testing a New Landing Page
+
+Step 1: Define goals and form hypotheses
+Goal: Identify the impact of the new landing page and recommendation page on conversion and user behavior.
+Hypotheses:
+* Personalized suggestions on homepage will engage visitors who would have otherwise bounced.
+* Relevant information on the next page will inspire visitors to make purchases who would not have otherwise.
+
+Step 2: Identify treatment & control
+Tip: only one thing should change between treatment and control
+Bounce Rate - control vs. treatment 1
+Purchase Rate - treatment 1 vs. treatment 2
+
+Step 3: Identify KPIs to measure
+* Between Control & Treatment 1: Bounce Rate on home page
+* Between Treatment 1 & Treatment 2: Purchase Rate
+* Keep track of other metrics too for clues:
+    * Click Through Rate
+    * Searches
+    * Time on site
+    * etc
+
+Step 4: Identify data to be collected
+* User ID (if user is logged in)
+* Cookie ID (no logged in)
+* What platform the visitor is on
+* Page Loads
+* Experiment assignment
+* If the user clicks on a recommendation and which one
+* Any engagement on the content page
+
+Step 5: Make sure logging is in place
+Smoke test everything
+* Does it work on mobile? How does it work if the user is logged out?
+* What happens if you press the “back” button?
+* What happens if some other experiment is triggered as well?
+* Does the logging interfere with other logging?
+
+Step 6: Determine how small of a difference needs to detected
+Current transactions/visitor: 0.05 (5%)
+Successful experiment: 0.051 (5.1%)
+Let’s say we would like to detect a 2% increase in transactions
+
+Step 7: Determine what fraction of visitors you want to be in the treatment
+Control - 33%
+Treatment 1 - 33%
+Treatment 2 - 33%
+
+Step 8: Calculate how much data to collect and how long to run the experiment
+power.prop.test(p1 = 0.05, p2 = 0.051, sig.level = 0.05, power = 0.8)
+-> n = 752,702
+n * 3 = 2.25M users are difficult for small company to reach
+What if we relaxed significant level to 10%?
+-> n = 592,903
+n * 3 = 1.78M
+
+Step 9: Figure out how long to run the test and run the test for AT LEAST that long
+For alpha = 0.05
+We need at least 2.25M users
+If our traffic is ~100,000 unique users/day, we need to run the test for 22.5 days
+For alpha = 0.1
+We need at least 1.78M users
+If our traffic is ~100,000 unique users/day, we need to run the test for 18 days
+
+Bonus: Multi-armed bandit approach
+Problem: We want to find the best variant, so we are willing to let the experiment run for longer. But we also want to maximize revenue during this experiment period.
+Solution: Adjust fraction of (new) users in treatment/control according to which group seems to be doing better.
+
+Summary: Landing page experiment
+* Make sure only one thing changes between treatment and control
+* Run multi-armed bandit if necessary
+
+A/B Testing Tools
+* Google Analytics
+* Optimizely
+* Unbounce
+* Visual Website Optimizer
