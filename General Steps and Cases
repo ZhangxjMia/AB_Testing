@@ -27,3 +27,66 @@ Too long to response
 10. First time trying something new: run an A/A test simultaneously to check for systematic biases
 
 
+Case Study 1: Testing a red vs. green button
+
+Step 1: Define goals and form hypotheses
+Goal: Quantify the impact a different call-to-action button color (from red to green) has on out core metrics
+Hypotheses:
+* Compared with a red CTA button, a green CTA button will attract user click more often
+* A fraction of these additional clicks will complete the transaction, increasing revenue
+* The change in behavior to be most pronounced on mobile (vs. desktop, tablet)
+Null Hypothesis:
+* Green button will cause no difference on Click Through Rate or other user behavior.
+
+Step 2: Identify treatment & control
+Control - Red "Order Now" Button
+Treatment - Green "Order Now" Button
+
+Step 3: Identify KPIs to measure
+* Revenue
+* Purchase Rate: Purchase per visitor
+* Click Through Rate: Clicks per visit or Clicks per visitor
+Other behavioral metrics:
+* Bounce Rate
+* Time on Site
+* Return Visits
+* Engagement with other parts of the website
+* Referrals
+* etc
+
+Step 4: Identify data to be collected
+* User ID (if user is logged in)
+* Cookie ID (no logged in)
+* What platform the visitor is on
+* Page Loads
+* Experiment assignment
+* if the user sees a button, and which color
+* clicks on the button, and which color
+* data for other metrics (i.e. engagement behavior)
+
+Step 5: Make sure logging is in place
+Smoke test everything!
+* Does it work on mobile? How does it work if the user is logged out?
+* What happens if you press the “back” button?
+* What happens if some other experiment is triggered as well?
+* Does the logging interfere with other logging?
+
+Step 6: Determine how small of a difference needs to be detected
+Current button CTR: 3%
+Successful experiment: 3.3% or more
+This means that we would need to collect enough data to measure a 10% increase. (10% depends on company)
+
+Step 7: Determine what fraction of visitors you want to be in the treatment
+50/50 splits are the easiest and take the least amount of time to run, but you might not always want to do that.
+
+Step 8: Calculate how much data to collect and how long to run the experiment
+Run a power analysis to decide how many data samples to collect depending on your tolerance for:
+* Minimum detectable level, aka minimum measurable difference (10% in our case)
+* False Negative (Type I error): we see significant result when there isn’t one
+    * Falsely reject the null hypothesis
+    * Typically, we want a false positive rate of < 5%, alpha = 0.05
+    * False positive rate is equivalent to the significant level of a statistic test
+* False Positive (Type II error): there is an effect, but we weren’t able to measure it
+    * We should reject the null hypothesis, but we did not
+    * Typically, we want a false negative rate of < 20%, beta = 0.2
+    * The “power” of the test is 1-beta = 0.8
