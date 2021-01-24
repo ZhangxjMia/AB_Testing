@@ -90,3 +90,20 @@ Run a power analysis to decide how many data samples to collect depending on you
     * We should reject the null hypothesis, but we did not
     * Typically, we want a false negative rate of < 20%, beta = 0.2
     * The “power” of the test is 1-beta = 0.8
+
+Step 9: Figure out how long to run the test and run the test for AT LEAST that long
+For 50/50 split test:
+We need at least 53,210 * 2 = 106,420 unique users
+If our traffic is about ~100,000 unique users/day, we need to run the test for at least a day.
+Note:
+If we were to run a 90/10 test, we would need 53,210 * 10 = 532,100 users, the 90% of 532,100 will go to the 90% of the traffic, so that the duration of test will be around 5 times more than the 50/50 split.
+
+Caution: if users are not required to log in, they may be in more than one experiment group! (exclude from test)
+
+Step 10: If this is your first time, run a dummy test (A/A Test)
+
+Summary: Classic button color experiment
+* Run a power analysis to determine how long to run test
+* Don’t stop the test too early!
+* If users do not have to be logged in to be part of the experiment, you may have problems with mixed group users
+* To avoid systematic biases, making sure that you have even treatment and control groups
