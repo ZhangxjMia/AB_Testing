@@ -1,0 +1,29 @@
+Why should you run a a/b test？
+The key to understand what drives your business and make data informed business decision.
+To understand the causal relationship and not simply the correlations.
+
+When to run a/b test?
+Deciding whether or not to launch a new product and experimental group
+To quantify the impact of a feature or product
+Compare data with intuition. i.e. to better understand how users respond to certain parts of a product
+
+When not?
+No clear comparison between control and experimental group
+Emotional changes needs time: Logo/Brand Name
+Response data hard to gather
+Too long to response
+
+
+10 Steps Guide to setting up an Experiment
+1. Define your goal and form hypotheses
+2. Identify control and treatment groups
+3. Identify KPIs to measure
+4. Identify what data needs to be collected
+5. Make sure that appropriate logging is in place to collect all necessary data
+6. Determine how small of a difference you would like to detect
+7. Determine what fraction of visitors you want to be in the treatment
+8. Run a power analysis to decide how much data you need to collect and how long you need to run the test
+9. Run the test for AT LEAST this long
+10. First time trying something new: run an A/A test simultaneously to check for systematic biases
+
+
